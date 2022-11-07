@@ -28,7 +28,7 @@ public class CoffeeMachine {
 
     static Scanner scanner = new Scanner(System.in);
 
-
+// function um restliche resourcen anzuzeigen
     private static void machine(int machineWater, int machineMilk, int machineMoney, int machineBeans, int machineCups) {
         System.out.println("The coffee machine has");
         System.out.println(machineWater + " " + "ml of water");
@@ -37,19 +37,21 @@ public class CoffeeMachine {
         System.out.println(machineCups + " " + "disposable cups");
         System.out.println("$" + machineMoney + " " + "of money");
     }
+//  prompt action
     private static void order(){
         System.out.println("Write action (buy, fill, take, remaining, exit)");
     }
-
+// promot getränk
     private static String selection(){
         System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu");
         return scanner.nextLine();
     }
-
+// geld rausnehmen
     private static  void take(){
         System.out.println("I gave you" + machineMoney);
         machineMoney = 0;
     }
+// espresso bestellung
     private static void espresso(){
         enoughWater = machineWater >= espressoWater * numberOfCoffee;
         enoughBeans = machineBeans >= espressoBeans * numberOfCoffee;
@@ -73,7 +75,7 @@ public class CoffeeMachine {
             }
         }
     }
-
+// latte bestellung
     private static void latte(){
         latteResources(latteWater, latteBeans, latteMilk, lattePrice);
     }
@@ -83,6 +85,7 @@ public class CoffeeMachine {
         enoughBeans = machineBeans >= latteBeans * numberOfCoffee;
         enoughCups = machineCups >= numberOfCoffee;
         enoughMilk = machineMilk >= latteMilk * numberOfCoffee;
+// ressourcen kontrollieren
         if (enoughWater && enoughBeans  && enoughCups && enoughMilk){
             System.out.println("I have enough resources, making you a coffee!");
 
@@ -108,6 +111,7 @@ public class CoffeeMachine {
 
         }
     }
+// maschine füllen
     private static void fill(){
         System.out.println("Write how many ml of water you want to add:");
         int waterFill = scanner.nextInt();
@@ -133,6 +137,7 @@ public class CoffeeMachine {
     public static void main(String[] args) {
         CoffeeMachine.order();
         String action = scanner.nextLine();
+// abchecken ob input exit ist, falls ja, program schliessen
         while (!Objects.equals(action, "exit")) {
 
             numberOfCoffee = 1;
