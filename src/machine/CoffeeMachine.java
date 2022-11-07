@@ -38,20 +38,18 @@ public class CoffeeMachine {
         System.out.println("$" + machineMoney + " " + "of money");
     }
     private static void order(){
-        System.out.println("Write action (buy, fill, take");
+        System.out.println("Write action (buy, fill, take, remaining, exit)");
     }
-
 
     private static String selection(){
         System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu");
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     private static  void take(){
         System.out.println("I gave you" + machineMoney);
         machineMoney = 0;
     }
-
     private static void espresso(){
         enoughWater = machineWater >= espressoWater * numberOfCoffee;
         enoughBeans = machineBeans >= espressoBeans * numberOfCoffee;
@@ -157,7 +155,6 @@ public class CoffeeMachine {
                 case "take" -> CoffeeMachine.take();
             }
             CoffeeMachine.order();
-
             action = scanner.nextLine();
         }
 
