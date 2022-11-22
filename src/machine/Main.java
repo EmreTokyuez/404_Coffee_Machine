@@ -10,6 +10,8 @@ public class Main {
         CoffeeMachine.order();
         Scanner scanner = new Scanner(System.in);
         String action = scanner.nextLine();
+        // abchecken ob input exit ist, falls ja, program schliessen
+
         while (!Objects.equals(action, "exit")) {
             switch (action) {
                 case "buy" -> {

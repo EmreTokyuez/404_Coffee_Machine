@@ -26,6 +26,7 @@ public class CoffeeMachine {
      int cappuccinoPrice = 6;
      Scanner scanner = new Scanner(System.in);
 
+// function um restliche resourcen anzuzeigen
 
     private  void machine(int machineWater, int machineMilk, int machineMoney, int machineBeans, int machineCups) {
         System.out.println("The coffee machine has");
@@ -35,19 +36,28 @@ public class CoffeeMachine {
         System.out.println(machineCups + " " + "disposable cups");
         System.out.println("$" + machineMoney + " " + "of money");
     }
-     void order(){
+
+    //  prompt action
+
+    void order(){
         System.out.println("Write action (buy, fill, take, remaining, exit)");
     }
+
+    // promot getränk
 
     String selection(){
         System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu");
         return scanner.nextLine();
     }
+// geld rausnehmen
 
     void take(){
         System.out.println("I gave you" + machineMoney);
         machineMoney = 0;
     }
+
+    // espresso bestellung
+
     void espresso(){
         enoughWater = machineWater >= espressoWater * numberOfCoffee;
         enoughBeans = machineBeans >= espressoBeans * numberOfCoffee;
@@ -72,9 +82,14 @@ public class CoffeeMachine {
         }
     }
 
+    // latte bestellung
+
     void latte(){
         latteResources(latteWater, latteBeans, latteMilk, lattePrice);
     }
+
+
+    // ressourcen kontrollieren
 
     private  void latteResources(int latteWater, int latteBeans, int latteMilk, int lattePrice) {
         enoughWater = machineWater >= latteWater * numberOfCoffee;
@@ -106,6 +121,9 @@ public class CoffeeMachine {
 
         }
     }
+
+    // maschine füllen
+
     void fill(){
         System.out.println("Write how many ml of water you want to add:");
         int waterFill = scanner.nextInt();
